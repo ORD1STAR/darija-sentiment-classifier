@@ -1,0 +1,91 @@
+id,text,script,source,topic,label
+1,"barakallah fik khoya, video rah3a bezzaf",latin,seed,music,positive
+2,"machallah 3lik, khdma nadia",latin,seed,comedy,positive
+3,"ya3tik saha, l'équipe nationale rahi top",mixed,seed,football,positive
+4,"chabba bezzaf had lagnia, nhabha",latin,seed,music,positive
+5,"merci bezzaf 3la l'information, rak top",mixed,seed,news,positive
+6,سحيتو يا خاوتي، فيديو مليح بزاف,arabic,seed,comedy,positive
+7,بارك الله فيك على هذا العمل الرائع,arabic,seed,news,positive
+8,ماشاء الله عليك، ربي يحفظك,arabic,seed,music,positive
+9,"djezzy rahi mlih3 had l'offre, internet yemchi bien",mixed,seed,telecom,positive
+10,"ooredoo 4g rahi tayra f dar, merci",mixed,seed,telecom,positive
+11,"tbarkallah 3la el khedra, rabi m3akom",latin,seed,football,positive
+12,"nhabkom bezzaf, continuez comme ça",mixed,seed,comedy,positive
+13,"a7sen produit chritou, mlih bezzaf",latin,seed,reviews,positive
+14,الخضرة شرفتنا اليوم، فرحتونا,arabic,seed,football,positive
+15,رائع بزاف، يعطيك الصحة خويا,arabic,seed,reviews,positive
+16,"top top top, ya3tik saha",latin,seed,music,positive
+17,"wallah ghir dahhaktni, rak mblindi",latin,seed,comedy,positive
+18,"bravo l'artiste, sawt chbab",mixed,seed,music,positive
+19,الله يبارك، منتوج ممتاز والسعر معقول,arabic,seed,reviews,positive
+20,"rabi ywaf9ek khti, video mofida",latin,seed,news,positive
+21,"hadi hiya l'algérie li nhabbouha, fiers",mixed,seed,football,positive
+22,"tellement drôle, 9tlatni b dahk",mixed,seed,comedy,positive
+23,مبروك للفريق، تستاهلو,arabic,seed,football,positive
+24,"service client ta3 mobilis mlih, 7allouli l'problème",mixed,seed,telecom,positive
+25,"chokran 3la nasi7a, mlih bezzaf",latin,seed,reviews,positive
+26,نحبك بزاف، ربي يوفقك,arabic,seed,music,positive
+27,a9wa match chefto had l3am,latin,seed,football,positive
+28,"ma3andi ma nzid, khdma propre",mixed,seed,reviews,positive
+29,شكرا على الشرح، فهمت كلش,arabic,seed,news,positive
+30,"sa7a ftorkom, video zina",latin,seed,comedy,positive
+31,"khdma ta3 walou, dhaya3tou wa9ti",latin,seed,comedy,negative
+32,"djezzy internet ma yemchich, 3yit",latin,seed,telecom,negative
+33,"c'est nul, ma3jbatnich had lagnia",mixed,seed,music,negative
+34,الكونيكسيون ماكاش، خدمة خايبة,arabic,seed,telecom,negative
+35,"hchouma 3likom, l3ab kima ldrari",latin,seed,football,negative
+36,"arnaque had le produit, ma tchrouhch",mixed,seed,reviews,negative
+37,فيديو خايب بزاف، ضيعت وقتي,arabic,seed,comedy,negative
+38,rana 3yina mel coupure ta3 dow,latin,seed,news,negative
+39,"l'arbitre khayeb, sar9ou lmatch",mixed,seed,football,negative
+40,هادو غير يكذبو على الشعب,arabic,seed,news,negative
+41,"ooredoo flousi klawhom, service zero",mixed,seed,telecom,negative
+42,"ma fhamtch 3lach tdirou hak, mauvais",mixed,seed,news,negative
+43,المنتوج تكسر من النهار الأول,arabic,seed,reviews,negative
+44,"sawt ta3ek khayeb, bara t9ra",latin,seed,music,negative
+45,"dégoûté, l'équipe ma l3batch kamel",mixed,seed,football,negative
+46,مستوى ضعيف، ماعجبنيش,arabic,seed,comedy,negative
+47,"bla ma tchrih, ghali w ma yeswach",latin,seed,reviews,negative
+48,"mobilis 3 jours bla réseau, honte",mixed,seed,telecom,negative
+49,ya latif 3la had l mostawa,latin,seed,comedy,negative
+50,خسارة، كنت نستنى خير من هكا,arabic,seed,music,negative
+51,livraison retardée w produit m9atta3,mixed,seed,reviews,negative
+52,"ki dima, l mas2oulin ma ydirou walou",latin,seed,news,negative
+53,الحكم ظلمنا، سرقة واضحة,arabic,seed,football,negative
+54,tfou 3la had service,latin,seed,telecom,negative
+55,"ma tadahakch ga3, b3id",latin,seed,comedy,negative
+56,"ghaltin f kolch, zero",latin,seed,news,negative
+57,"lagnia mla3ba, copie ta3 wa7ed akhor",mixed,seed,music,negative
+58,خدمة الزبائن ما يردوش، خايبين,arabic,seed,telecom,negative
+59,"ma ynajemch ychri hadi, ghla bezzaf",latin,seed,reviews,negative
+60,خيبتونا، ماعندكم حتى مستوى,arabic,seed,football,negative
+61,wa9tach ykhrej l'épisode jdid?,mixed,seed,comedy,neutral
+62,chhal soum ta3 had telephone?,latin,seed,reviews,neutral
+63,le match ta3 ghodwa win ytfarej?,mixed,seed,football,neutral
+64,كاش واحد يعرف وين نلقى هذا المنتوج؟,arabic,seed,reviews,neutral
+65,l'offre hadi tmchi f wahran?,mixed,seed,telecom,neutral
+66,chkoun li ghna had lagnia?,latin,seed,music,neutral
+67,الماتش يبدا على الثمانية,arabic,seed,football,neutral
+68,rani nchouf men frança,mixed,seed,news,neutral
+69,كم سعر هذا العرض؟,arabic,seed,telecom,neutral
+70,ana jit men tiktok,latin,seed,comedy,neutral
+71,had video tsawret f alger?,latin,seed,news,neutral
+72,واش هو اسم هذه الأغنية؟,arabic,seed,music,neutral
+73,l'application tkhdem 3la iphone?,mixed,seed,telecom,neutral
+74,première fois nchouf had la chaîne,mixed,seed,comedy,neutral
+75,kayen livraison l setif?,latin,seed,reviews,neutral
+76,الخبر هذا من وين؟,arabic,seed,news,neutral
+77,chkoun chaf match lbara7?,latin,seed,football,neutral
+78,"nseyi l'code ta3 recharge, kifach ndir?",mixed,seed,telecom,neutral
+79,واش كاين جزء ثاني؟,arabic,seed,comedy,neutral
+80,la taille hadi kayna f noir?,mixed,seed,reviews,neutral
+81,chhal men 3am 3andek?,latin,seed,music,neutral
+82,قريت الخبر في الجريدة اليوم,arabic,seed,news,neutral
+83,l'équipe tal3ab b 4-4-2,mixed,seed,football,neutral
+84,كيفاش نفعل الأنترنت؟,arabic,seed,telecom,neutral
+85,rani nesta3ref 3la had l'artiste,mixed,seed,music,neutral
+86,wa9tach t7al l'boutique?,latin,seed,reviews,neutral
+87,الحلقة الجاية نهار الخميس,arabic,seed,comedy,neutral
+88,chkoun men bjaya hna?,latin,seed,comedy,neutral
+89,had l9anoun yabda men janvier,mixed,seed,news,neutral
+90,واش يلعب الماتش الجاي؟,arabic,seed,football,neutral
