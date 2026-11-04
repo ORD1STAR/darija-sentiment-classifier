@@ -19,3 +19,15 @@ def test_keeps_arabic_and_emojis():
 
 def test_non_string_returns_empty():
     assert clean_text(None) == ""
+
+
+def test_strips_arabic_diacritics_and_tatweel():
+    assert clean_text("مَرْحَبًا بـــكم") == "مرحبا بكم"
+
+
+def test_unifies_alef_and_alef_maqsura():
+    assert clean_text("أنا إسلام آمال على") == "انا اسلام امال علي"
+
+
+def test_latin_text_unchanged_by_arabic_rules():
+    assert clean_text("Allah y3tik saha") == "Allah y3tik saha"

@@ -5,10 +5,10 @@ of its acceptance criteria hold and tests cover them.
 
 ## 1. Arabic script normalization
 Normalize Arabic text: strip diacritics and tatweel, unify alef forms (أ إ آ → ا),
-alef maqsura (ى → ي) and taa marbuta handling stays untouched.
-- [ ] `clean_text` removes harakat and tatweel
-- [ ] أ/إ/آ map to ا and ى maps to ي
-- [ ] Latin text is unchanged by these rules
+alef maqsura (ى → ي). Taa marbuta is left as-is.
+- [x] `clean_text` removes harakat and tatweel
+- [x] أ/إ/آ map to ا and ى maps to ي
+- [x] Latin text is unchanged by these rules
 
 ## 2. Personal data scrubbing
 Remove phone numbers and emails during cleaning (privacy rule from the brief).
