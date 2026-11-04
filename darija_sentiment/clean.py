@@ -12,15 +12,15 @@ _MENTION_RE = re.compile(r"@\w+")
 _REPEAT_RE = re.compile(r"(.)\1{2,}")
 _SPACES_RE = re.compile(r"\s+")
 # harakat (fathatan..sukun), superscript alef and tatweel
-_DIACRITICS_RE = re.compile("[ً-ْٰـ]")
-_ALEF_RE = re.compile("[آأإ]")
+_DIACRITICS_RE = re.compile("[\u064b-\u0652\u0670\u0640]")
+_ALEF_RE = re.compile("[\u0622\u0623\u0625]")
 
 
 def normalize_arabic(text: str) -> str:
     """Strip diacritics and tatweel, unify alef forms and alef maqsura."""
     text = _DIACRITICS_RE.sub("", text)
-    text = _ALEF_RE.sub("ا", text)
-    return text.replace("ى", "ي")
+    text = _ALEF_RE.sub("\u0627", text)
+    return text.replace("\u0649", "\u064a")
 
 
 def clean_text(text: str) -> str:
