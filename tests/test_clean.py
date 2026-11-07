@@ -31,3 +31,16 @@ def test_unifies_alef_and_alef_maqsura():
 
 def test_latin_text_unchanged_by_arabic_rules():
     assert clean_text("Allah y3tik saha") == "Allah y3tik saha"
+
+
+def test_scrubs_algerian_phone_numbers():
+    assert clean_text("3aytouli 0550 12 34 56 wela +213 661234567") == "3aytouli wela"
+    assert clean_text("num: 00213-7-71-23-45-67 merci") == "num: merci"
+
+
+def test_scrubs_emails():
+    assert clean_text("ab3tli f contact.me@mail.dz khoya") == "ab3tli f khoya"
+
+
+def test_keeps_scores_and_years():
+    assert clean_text("rbe7na 3-0 f 2019, 12345 vues") == "rbe7na 3-0 f 2019, 12345 vues"

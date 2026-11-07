@@ -12,9 +12,9 @@ alef maqsura (ى → ي). Taa marbuta is left as-is.
 
 ## 2. Personal data scrubbing
 Remove phone numbers and emails during cleaning (privacy rule from the brief).
-- [ ] Algerian phone formats (05/06/07 + 8 digits, +213 / 00213 prefixes) are removed
-- [ ] Emails are removed
-- [ ] Normal numbers in text (scores, years) are kept
+- [x] Algerian phone formats (05/06/07 + 8 digits, +213 / 00213 prefixes) are removed
+- [x] Emails are removed
+- [x] Normal numbers in text (scores, years) are kept
 
 ## 3. Script detection
 Tag each comment as `arabic`, `latin` or `mixed`.
