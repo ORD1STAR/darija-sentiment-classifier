@@ -13,7 +13,7 @@ python -m pytest -q
 python -m ruff check .
 ```
 
-`data/processed/sample.csv` is a small hand-written seed set (90 comments) used
+`data/processed/sample.csv` is a small hand-written seed set (96 comments) used
 to develop the pipeline. The real dataset is collected and labeled separately.
 
 ## Layout

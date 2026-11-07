@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 
 from darija_sentiment import LABELS
 from darija_sentiment.clean import clean_text
+from darija_sentiment.script import detect_script
 
 DEFAULT_DATA = Path(__file__).resolve().parent.parent / "data" / "processed" / "sample.csv"
 REQUIRED_COLUMNS = ("text", "label")
@@ -23,6 +24,8 @@ def load_dataset(path: str | Path = DEFAULT_DATA) -> pd.DataFrame:
         raise ValueError(f"unknown labels in dataset: {sorted(unknown)}")
     df = df.dropna(subset=["text"]).copy()
     df["clean"] = df["text"].map(clean_text)
+    if "script" not in df.columns:
+        df["script"] = df["clean"].map(detect_script)
     return df[df["clean"] != ""].reset_index(drop=True)
 
 

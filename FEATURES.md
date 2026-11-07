@@ -17,10 +17,10 @@ Remove phone numbers and emails during cleaning (privacy rule from the brief).
 - [x] Normal numbers in text (scores, years) are kept
 
 ## 3. Script detection
-Tag each comment as `arabic`, `latin` or `mixed`.
-- [ ] `detect_script` returns the right tag for pure Arabic, pure Latin, mixed
-- [ ] Arabizi digits (3, 7, 9) count as Latin
-- [ ] `load_dataset` fills a `script` column when it is missing
+Tag each comment's writing system as `arabic`, `latin` or `mixed` (both scripts).
+- [x] `detect_script` returns the right tag for pure Arabic, pure Latin, mixed
+- [x] Arabizi digits (3, 7, 9) count as Latin
+- [x] `load_dataset` fills a `script` column when it is missing
 
 ## 4. Emoji tags option
 Optionally convert emojis to text tags (`😍` → ` EMO_POS `) for TF-IDF.

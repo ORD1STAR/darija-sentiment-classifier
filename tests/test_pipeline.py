@@ -46,3 +46,12 @@ def test_cli_train_then_predict(tmp_path, capsys):
     assert main(["train", "--model", model_path]) == 0
     assert main(["predict", "chhal soum?", "--model", model_path]) == 0
     assert '"label"' in capsys.readouterr().out
+
+
+def test_load_fills_missing_script_column(tmp_path):
+    path = tmp_path / "noscript.csv"
+    pd.DataFrame({"text": ["فيديو مليح", "video mlih"], "label": ["positive"] * 2}).to_csv(
+        path, index=False
+    )
+    df = load_dataset(path)
+    assert list(df["script"]) == ["arabic", "latin"]
