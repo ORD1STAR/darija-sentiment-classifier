@@ -7,6 +7,8 @@ letter repeats.
 
 import re
 
+from darija_sentiment.emoji_tags import emojis_to_tags
+
 _URL_RE = re.compile(r"(https?://\S+|www\.\S+)", re.IGNORECASE)
 _EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
 _MENTION_RE = re.compile(r"@\w+")
@@ -33,13 +35,18 @@ def scrub_personal_data(text: str) -> str:
     return _PHONE_RE.sub(" ", text)
 
 
-def clean_text(text: str) -> str:
-    """Return a normalized version of a raw comment."""
+def clean_text(text: str, emoji_tags: bool = False) -> str:
+    """Return a normalized version of a raw comment.
+
+    With `emoji_tags=True`, known emojis become sentiment tags (for TF-IDF).
+    """
     if not isinstance(text, str):
         return ""
     text = scrub_personal_data(text)
     text = _MENTION_RE.sub(" ", text)
     text = normalize_arabic(text)
     text = _REPEAT_RE.sub(r"\1\1", text)
+    if emoji_tags:
+        text = emojis_to_tags(text)
     text = _SPACES_RE.sub(" ", text)
     return text.strip()

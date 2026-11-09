@@ -44,3 +44,17 @@ def test_scrubs_emails():
 
 def test_keeps_scores_and_years():
     assert clean_text("rbe7na 3-0 f 2019, 12345 vues") == "rbe7na 3-0 f 2019, 12345 vues"
+
+
+def test_emoji_tags_option():
+    assert clean_text("top 😍 bezzaf", emoji_tags=True) == "top EMO_POS bezzaf"
+    assert clean_text("khayeb 😡👎", emoji_tags=True) == "khayeb EMO_NEG EMO_NEG"
+    assert clean_text("nhabkom ❤️🇩🇿", emoji_tags=True) == "nhabkom EMO_POS EMO_POS"
+
+
+def test_emojis_kept_by_default():
+    assert clean_text("top 😍") == "top 😍"
+
+
+def test_unknown_emojis_are_kept():
+    assert clean_text("chouf 🚗 🐪", emoji_tags=True) == "chouf 🚗 🐪"

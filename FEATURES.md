@@ -24,9 +24,9 @@ Tag each comment's writing system as `arabic`, `latin` or `mixed` (both scripts)
 
 ## 4. Emoji tags option
 Optionally convert emojis to text tags (`😍` → ` EMO_POS `) for TF-IDF.
-- [ ] `clean_text(..., emoji_tags=True)` converts known emojis into tags
-- [ ] Default behaviour keeps emojis as-is
-- [ ] Unknown emojis are kept
+- [x] `clean_text(..., emoji_tags=True)` converts known emojis into tags
+- [x] Default behaviour keeps emojis as-is
+- [x] Unknown emojis are kept
 
 ## 5. Train / validation / test split
 70/15/15 stratified split with a fixed seed, written to disk once.
