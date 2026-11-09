@@ -30,9 +30,9 @@ Optionally convert emojis to text tags (`😍` → ` EMO_POS `) for TF-IDF.
 
 ## 5. Train / validation / test split
 70/15/15 stratified split with a fixed seed, written to disk once.
-- [ ] `split` CLI command writes `train.csv`, `val.csv`, `test.csv`
-- [ ] Label proportions match within one sample per class
-- [ ] Re-running with the same seed gives identical files
+- [x] `split` CLI command writes `train.csv`, `val.csv`, `test.csv`
+- [x] Label proportions match within one sample per class
+- [x] Re-running with the same seed gives identical files
 
 ## 6. Word n-gram feature block
 Add word 1–2 grams next to the char 2–5 grams (FeatureUnion).

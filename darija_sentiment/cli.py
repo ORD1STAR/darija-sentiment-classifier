@@ -7,6 +7,7 @@ from pathlib import Path
 from darija_sentiment.data import DEFAULT_DATA
 
 DEFAULT_MODEL = Path("artifacts") / "baseline.joblib"
+DEFAULT_SPLITS = Path("data") / "splits"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -17,6 +18,11 @@ def main(argv: list[str] | None = None) -> int:
     p_train.add_argument("--data", default=str(DEFAULT_DATA))
     p_train.add_argument("--model", default=str(DEFAULT_MODEL))
     p_train.add_argument("--seed", type=int, default=42)
+
+    p_split = sub.add_parser("split", help="write a stratified 70/15/15 split")
+    p_split.add_argument("--data", default=str(DEFAULT_DATA))
+    p_split.add_argument("--out", default=str(DEFAULT_SPLITS))
+    p_split.add_argument("--seed", type=int, default=42)
 
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
@@ -29,6 +35,10 @@ def main(argv: list[str] | None = None) -> int:
 
         metrics = train(args.data, args.model, seed=args.seed)
         print(json.dumps(metrics, indent=2))
+    elif args.command == "split":
+        from darija_sentiment.data import write_splits
+
+        print(json.dumps(write_splits(args.data, args.out, seed=args.seed)))
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 

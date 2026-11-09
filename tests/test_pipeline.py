@@ -35,7 +35,7 @@ def test_train_and_predict_end_to_end(tmp_path):
     model_path = tmp_path / "model.joblib"
     metrics = train(DEFAULT_DATA, model_path)
     assert model_path.exists()
-    assert 0.0 <= metrics["macro_f1"] <= 1.0
+    assert 0.0 <= metrics["val_macro_f1"] <= 1.0
     result = Predictor(model_path).predict("barakallah fik, khdma mlih bezzaf")
     assert result["label"] in LABELS
     assert sum(result["scores"].values()) == pytest.approx(1.0)
