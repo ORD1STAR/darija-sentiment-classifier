@@ -8,6 +8,7 @@ from darija_sentiment.data import DEFAULT_DATA
 
 DEFAULT_MODEL = Path("artifacts") / "baseline.joblib"
 DEFAULT_SPLITS = Path("data") / "splits"
+DEFAULT_REPORTS = Path("reports")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -25,6 +26,13 @@ def main(argv: list[str] | None = None) -> int:
     p_split.add_argument("--data", default=str(DEFAULT_DATA))
     p_split.add_argument("--out", default=str(DEFAULT_SPLITS))
     p_split.add_argument("--seed", type=int, default=42)
+
+    p_eval = sub.add_parser("evaluate", help="evaluate a saved model on a split")
+    p_eval.add_argument("--data", default=str(DEFAULT_DATA))
+    p_eval.add_argument("--model", default=str(DEFAULT_MODEL))
+    p_eval.add_argument("--split", choices=("train", "val", "test"), default="test")
+    p_eval.add_argument("--seed", type=int, default=42)
+    p_eval.add_argument("--out", default=str(DEFAULT_REPORTS))
 
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
@@ -47,6 +55,14 @@ def main(argv: list[str] | None = None) -> int:
         from darija_sentiment.data import write_splits
 
         print(json.dumps(write_splits(args.data, args.out, seed=args.seed)))
+    elif args.command == "evaluate":
+        from darija_sentiment.evaluate import evaluate
+
+        metrics = evaluate(args.model, args.data, args.split, seed=args.seed, out_dir=args.out)
+        print(
+            f"macro F1 ({args.split}): {metrics['macro_f1']:.3f}  accuracy: {metrics['accuracy']:.3f}"
+        )
+        print(f"report written to {args.out}/metrics.json")
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 

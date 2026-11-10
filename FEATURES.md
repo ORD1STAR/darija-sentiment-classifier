@@ -42,9 +42,9 @@ Add word 1–2 grams next to the char 2–5 grams (FeatureUnion).
 
 ## 7. Evaluation module
 Full metrics on a split: accuracy, macro F1, per-class precision/recall, confusion matrix.
-- [ ] `evaluate` CLI command prints and saves `metrics.json`
-- [ ] Confusion matrix is saved as CSV with label order fixed
-- [ ] Macro F1 is the headline metric
+- [x] `evaluate` CLI command prints and saves `metrics.json`
+- [x] Confusion matrix is saved as CSV with label order fixed
+- [x] Macro F1 is the headline metric
 
 ## 8. Breakdown metrics
 Macro F1 by script, by length bucket (short/long) and by topic.
