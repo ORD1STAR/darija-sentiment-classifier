@@ -48,9 +48,9 @@ Full metrics on a split: accuracy, macro F1, per-class precision/recall, confusi
 
 ## 8. Breakdown metrics
 Macro F1 by script, by length bucket (short/long) and by topic.
-- [ ] Breakdowns are part of `metrics.json`
-- [ ] Groups with fewer than 5 samples are reported with a `low_support` flag
-- [ ] Unit test on a hand-made prediction table
+- [x] Breakdowns are part of `metrics.json`
+- [x] Groups with fewer than 5 samples are reported with a `low_support` flag
+- [x] Unit test on a hand-made prediction table
 
 ## 9. Hyperparameter tuning
 Cross-validated search over C and class weights on the train split only.

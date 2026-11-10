@@ -52,6 +52,35 @@ def compute_metrics(gold: pd.Series, pred: pd.Series) -> dict:
     }
 
 
+LOW_SUPPORT = 5
+SHORT_MAX_WORDS = 5
+
+
+def length_bucket(text: str) -> str:
+    return "short" if len(str(text).split()) <= SHORT_MAX_WORDS else "long"
+
+
+def compute_breakdowns(table: pd.DataFrame) -> dict:
+    """Macro F1 and accuracy per script, length bucket and topic."""
+    table = table.assign(length=table["clean"].map(length_bucket))
+    breakdowns = {}
+    for column in ("script", "length", "topic"):
+        if column not in table.columns:
+            continue
+        groups = {}
+        for value, group in table.groupby(column, sort=True):
+            groups[str(value)] = {
+                "n": int(len(group)),
+                "macro_f1": float(
+                    f1_score(group["label"], group["pred"], average="macro", zero_division=0)
+                ),
+                "accuracy": float(accuracy_score(group["label"], group["pred"])),
+                "low_support": bool(len(group) < LOW_SUPPORT),
+            }
+        breakdowns[column] = groups
+    return breakdowns
+
+
 def evaluate(
     model_path: str | Path,
     data_path: str | Path,
@@ -63,6 +92,7 @@ def evaluate(
     df = split_three(load_dataset(data_path), seed=seed)[split]
     table = predict_split(model, df)
     metrics = {"split": split, **compute_metrics(table["label"], table["pred"])}
+    metrics["breakdowns"] = compute_breakdowns(table)
     if out_dir is not None:
         save_report(metrics, out_dir)
     return metrics
