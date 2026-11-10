@@ -59,9 +59,8 @@ def main(argv: list[str] | None = None) -> int:
         from darija_sentiment.evaluate import evaluate
 
         metrics = evaluate(args.model, args.data, args.split, seed=args.seed, out_dir=args.out)
-        print(
-            f"macro F1 ({args.split}): {metrics['macro_f1']:.3f}  accuracy: {metrics['accuracy']:.3f}"
-        )
+        f1, acc = metrics["macro_f1"], metrics["accuracy"]
+        print(f"macro F1 ({args.split}): {f1:.3f}  accuracy: {acc:.3f}")
         print(f"report written to {args.out}/metrics.json")
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
