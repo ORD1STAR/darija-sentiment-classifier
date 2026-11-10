@@ -36,9 +36,9 @@ Optionally convert emojis to text tags (`😍` → ` EMO_POS `) for TF-IDF.
 
 ## 6. Word n-gram feature block
 Add word 1–2 grams next to the char 2–5 grams (FeatureUnion).
-- [ ] Baseline pipeline uses both blocks
-- [ ] Each block can be turned off from the CLI
-- [ ] Tests cover both configurations
+- [x] Baseline pipeline uses both blocks
+- [x] Each block can be turned off from the CLI
+- [x] Tests cover both configurations
 
 ## 7. Evaluation module
 Full metrics on a split: accuracy, macro F1, per-class precision/recall, confusion matrix.

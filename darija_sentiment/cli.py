@@ -18,6 +18,8 @@ def main(argv: list[str] | None = None) -> int:
     p_train.add_argument("--data", default=str(DEFAULT_DATA))
     p_train.add_argument("--model", default=str(DEFAULT_MODEL))
     p_train.add_argument("--seed", type=int, default=42)
+    p_train.add_argument("--no-char", action="store_true", help="drop the char n-gram block")
+    p_train.add_argument("--no-word", action="store_true", help="drop the word n-gram block")
 
     p_split = sub.add_parser("split", help="write a stratified 70/15/15 split")
     p_split.add_argument("--data", default=str(DEFAULT_DATA))
@@ -33,7 +35,13 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "train":
         from darija_sentiment.baseline import train
 
-        metrics = train(args.data, args.model, seed=args.seed)
+        metrics = train(
+            args.data,
+            args.model,
+            seed=args.seed,
+            char_ngrams=not args.no_char,
+            word_ngrams=not args.no_word,
+        )
         print(json.dumps(metrics, indent=2))
     elif args.command == "split":
         from darija_sentiment.data import write_splits
