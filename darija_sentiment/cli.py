@@ -46,6 +46,10 @@ def main(argv: list[str] | None = None) -> int:
     p_val.add_argument("path")
     p_val.add_argument("--allow-unlabeled", action="store_true")
 
+    p_agree = sub.add_parser("agreement", help="Cohen's kappa between two label files")
+    p_agree.add_argument("file_a")
+    p_agree.add_argument("file_b")
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -92,6 +96,16 @@ def main(argv: list[str] | None = None) -> int:
             print(f"- {problem}")
         print("valid" if not problems else f"{len(problems)} problem(s)")
         return 1 if problems else 0
+    elif args.command == "agreement":
+        from darija_sentiment.agreement import GOOD_KAPPA, agreement_files
+
+        result = agreement_files(args.file_a, args.file_b)
+        print(f"shared ids: {result['n_shared']}")
+        print(f"raw agreement: {result['raw_agreement']:.3f}")
+        print(f"Cohen's kappa: {result['kappa']:.3f}")
+        print(result["table"].to_string())
+        if result["kappa"] < GOOD_KAPPA:
+            print(f"warning: kappa below {GOOD_KAPPA}, refine the guide and relabel unclear cases")
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 

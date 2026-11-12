@@ -66,9 +66,9 @@ Labeling guide in `docs/labeling_guide.md` and strict schema validation.
 
 ## 11. Inter-annotator agreement
 Cohen's kappa between two label files on shared ids.
-- [ ] `agreement` command prints kappa and the confusion table
-- [ ] Only shared ids are compared; the count is printed
-- [ ] Warns when kappa < 0.6
+- [x] `agreement` command prints kappa and the confusion table
+- [x] Only shared ids are compared; the count is printed
+- [x] Warns when kappa < 0.6
 
 ## 12. Dedupe and spam filter
 Remove exact/near duplicates and spam or ads from a dataset.
