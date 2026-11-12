@@ -60,9 +60,9 @@ Cross-validated search over C and class weights on the train split only.
 
 ## 10. Labeling schema and guide
 Labeling guide in `docs/labeling_guide.md` and strict schema validation.
-- [ ] Guide covers positive/negative/neutral, mixed, sarcasm, religious phrases, spam
-- [ ] `validate` command checks columns `id,text,script,source,topic,label,notes`
-- [ ] Duplicate ids and empty texts are reported
+- [x] Guide covers positive/negative/neutral, mixed, sarcasm, religious phrases, spam
+- [x] `validate` command checks columns `id,text,script,source,topic,label,notes`
+- [x] Duplicate ids and empty texts are reported
 
 ## 11. Inter-annotator agreement
 Cohen's kappa between two label files on shared ids.

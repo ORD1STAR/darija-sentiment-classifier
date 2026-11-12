@@ -42,6 +42,10 @@ def main(argv: list[str] | None = None) -> int:
     p_eval.add_argument("--seed", type=int, default=42)
     p_eval.add_argument("--out", default=str(DEFAULT_REPORTS))
 
+    p_val = sub.add_parser("validate", help="check a labeled CSV against the schema")
+    p_val.add_argument("path")
+    p_val.add_argument("--allow-unlabeled", action="store_true")
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -80,6 +84,14 @@ def main(argv: list[str] | None = None) -> int:
         f1, acc = metrics["macro_f1"], metrics["accuracy"]
         print(f"macro F1 ({args.split}): {f1:.3f}  accuracy: {acc:.3f}")
         print(f"report written to {args.out}/metrics.json")
+    elif args.command == "validate":
+        from darija_sentiment.validate import validate_file
+
+        problems = validate_file(args.path, allow_unlabeled=args.allow_unlabeled)
+        for problem in problems:
+            print(f"- {problem}")
+        print("valid" if not problems else f"{len(problems)} problem(s)")
+        return 1 if problems else 0
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 
