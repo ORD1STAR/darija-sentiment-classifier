@@ -9,6 +9,7 @@ from darija_sentiment.data import DEFAULT_DATA
 DEFAULT_MODEL = Path("artifacts") / "baseline.joblib"
 DEFAULT_SPLITS = Path("data") / "splits"
 DEFAULT_REPORTS = Path("reports")
+DEFAULT_PARAMS = Path("artifacts") / "best_params.json"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -21,6 +22,13 @@ def main(argv: list[str] | None = None) -> int:
     p_train.add_argument("--seed", type=int, default=42)
     p_train.add_argument("--no-char", action="store_true", help="drop the char n-gram block")
     p_train.add_argument("--no-word", action="store_true", help="drop the word n-gram block")
+    p_train.add_argument("--params", help="JSON file written by `tune`")
+
+    p_tune = sub.add_parser("tune", help="cross-validate C and class weights on train")
+    p_tune.add_argument("--data", default=str(DEFAULT_DATA))
+    p_tune.add_argument("--out", default=str(DEFAULT_PARAMS))
+    p_tune.add_argument("--seed", type=int, default=42)
+    p_tune.add_argument("--folds", type=int, default=5)
 
     p_split = sub.add_parser("split", help="write a stratified 70/15/15 split")
     p_split.add_argument("--data", default=str(DEFAULT_DATA))
@@ -43,18 +51,28 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "train":
         from darija_sentiment.baseline import train
 
+        params = {}
+        if args.params:
+            from darija_sentiment.tune import load_params
+
+            params = load_params(args.params)
         metrics = train(
             args.data,
             args.model,
             seed=args.seed,
             char_ngrams=not args.no_char,
             word_ngrams=not args.no_word,
+            **params,
         )
         print(json.dumps(metrics, indent=2))
     elif args.command == "split":
         from darija_sentiment.data import write_splits
 
         print(json.dumps(write_splits(args.data, args.out, seed=args.seed)))
+    elif args.command == "tune":
+        from darija_sentiment.tune import tune
+
+        print(json.dumps(tune(args.data, args.out, seed=args.seed, folds=args.folds), indent=2))
     elif args.command == "evaluate":
         from darija_sentiment.evaluate import evaluate
 

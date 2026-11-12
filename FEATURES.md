@@ -54,9 +54,9 @@ Macro F1 by script, by length bucket (short/long) and by topic.
 
 ## 9. Hyperparameter tuning
 Cross-validated search over C and class weights on the train split only.
-- [ ] `tune` command runs stratified k-fold CV on train
-- [ ] Best params are saved and reused by `train --params`
-- [ ] Test split is never read by `tune`
+- [x] `tune` command runs stratified k-fold CV on train
+- [x] Best params are saved and reused by `train --params`
+- [x] Test split is never read by `tune`
 
 ## 10. Labeling schema and guide
 Labeling guide in `docs/labeling_guide.md` and strict schema validation.
