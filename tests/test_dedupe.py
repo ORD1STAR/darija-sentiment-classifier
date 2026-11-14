@@ -13,7 +13,7 @@ def test_spam_rules():
 
 
 def test_exact_duplicates_after_cleaning_are_dropped():
-    df = pd.DataFrame({"text": ["Top bezzaaaaf", "top  bezzaf", "khayeb", "promo whatsapp now"]})
+    df = pd.DataFrame({"text": ["Top bezzaaaaf", "top  bezzaaf", "khayeb", "promo whatsapp now"]})
     kept, report = dedupe_and_filter(df)
     assert list(kept["text"]) == ["Top bezzaaaaf", "khayeb"]
     assert report == {"spam_promo": 1, "empty": 0, "duplicate": 1, "kept": 2}
