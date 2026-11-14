@@ -50,6 +50,10 @@ def main(argv: list[str] | None = None) -> int:
     p_agree.add_argument("file_a")
     p_agree.add_argument("file_b")
 
+    p_dedupe = sub.add_parser("dedupe", help="drop duplicates and spam from a CSV")
+    p_dedupe.add_argument("path")
+    p_dedupe.add_argument("--out", required=True)
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -106,6 +110,14 @@ def main(argv: list[str] | None = None) -> int:
         print(result["table"].to_string())
         if result["kappa"] < GOOD_KAPPA:
             print(f"warning: kappa below {GOOD_KAPPA}, refine the guide and relabel unclear cases")
+    elif args.command == "dedupe":
+        import pandas as pd
+
+        from darija_sentiment.dedupe import dedupe_and_filter
+
+        kept, report = dedupe_and_filter(pd.read_csv(args.path))
+        kept.to_csv(args.out, index=False, lineterminator="\n")
+        print(json.dumps(report, indent=2))
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 

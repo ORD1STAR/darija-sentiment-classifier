@@ -72,9 +72,9 @@ Cohen's kappa between two label files on shared ids.
 
 ## 12. Dedupe and spam filter
 Remove exact/near duplicates and spam or ads from a dataset.
-- [ ] Exact duplicates after cleaning are dropped
-- [ ] Spam heuristics (links-only, promo keywords, repeated phone) drop rows
-- [ ] A removal report counts rows per reason
+- [x] Exact duplicates after cleaning are dropped
+- [x] Spam heuristics (links-only, promo keywords, repeated phone) drop rows
+- [x] A removal report counts rows per reason
 
 ## 13. YouTube comment collector
 Collect public comments with the YouTube Data API v3 into raw JSONL.
