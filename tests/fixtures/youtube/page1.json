@@ -1,0 +1,39 @@
+{
+  "nextPageToken": "P2",
+  "items": [
+    {
+      "id": "c1",
+      "snippet": {
+        "topLevelComment": {
+          "snippet": {
+            "textOriginal": "sa7a ftorkom 😍",
+            "textDisplay": "sa7a ftorkom 😍",
+            "authorDisplayName": "Someone",
+            "authorChannelId": {
+              "value": "UCxxxx"
+            },
+            "publishedAt": "2026-10-01T10:00:00Z",
+            "likeCount": 4
+          }
+        }
+      }
+    },
+    {
+      "id": "c2",
+      "snippet": {
+        "topLevelComment": {
+          "snippet": {
+            "textOriginal": "خدمة خايبة",
+            "textDisplay": "خدمة خايبة",
+            "authorDisplayName": "Other",
+            "authorChannelId": {
+              "value": "UCxxxx"
+            },
+            "publishedAt": "2026-10-01T11:00:00Z",
+            "likeCount": 0
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "error": {
+    "code": 403,
+    "errors": [
+      {
+        "reason": "quotaExceeded"
+      }
+    ]
+  }
+}

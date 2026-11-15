@@ -54,6 +54,10 @@ def main(argv: list[str] | None = None) -> int:
     p_dedupe.add_argument("path")
     p_dedupe.add_argument("--out", required=True)
 
+    p_yt = sub.add_parser("collect-youtube", help="collect public comments (YOUTUBE_API_KEY)")
+    p_yt.add_argument("video_ids", nargs="+")
+    p_yt.add_argument("--out", default=str(Path("data") / "raw" / "youtube.jsonl"))
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -118,6 +122,11 @@ def main(argv: list[str] | None = None) -> int:
         kept, report = dedupe_and_filter(pd.read_csv(args.path))
         kept.to_csv(args.out, index=False, lineterminator="\n")
         print(json.dumps(report, indent=2))
+    elif args.command == "collect-youtube":
+        from darija_sentiment.collect_youtube import YouTubeCollector
+
+        stats = YouTubeCollector().collect(args.video_ids, args.out)
+        print(json.dumps(stats, indent=2))
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 

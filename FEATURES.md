@@ -78,9 +78,9 @@ Remove exact/near duplicates and spam or ads from a dataset.
 
 ## 13. YouTube comment collector
 Collect public comments with the YouTube Data API v3 into raw JSONL.
-- [ ] Reads the API key from `YOUTUBE_API_KEY`, never from files
-- [ ] Handles pagination and quota errors without crashing
-- [ ] Tested offline with recorded API responses
+- [x] Reads the API key from `YOUTUBE_API_KEY`, never from files
+- [x] Handles pagination and quota errors without crashing
+- [x] Tested offline with recorded API responses
 
 ## 14. Raw-to-processed dataset builder
 Turn raw JSONL into an anonymized, deduped CSV ready for labeling.
