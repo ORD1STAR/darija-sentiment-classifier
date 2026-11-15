@@ -90,9 +90,9 @@ Turn raw JSONL into an anonymized, deduped CSV ready for labeling.
 
 ## 15. Error analysis export
 Export wrong predictions for review and a markdown summary.
-- [ ] `errors` command writes `errors.csv` with text, gold, pred, confidence
-- [ ] Summary groups errors by script and by gold→pred pair
-- [ ] Rows sorted by confidence (most confident mistakes first)
+- [x] `errors` command writes `errors.csv` with text, gold, pred, confidence
+- [x] Summary groups errors by script and by gold→pred pair
+- [x] Rows sorted by confidence (most confident mistakes first)
 
 ## 16. Results report
 Generate `reports/results.md` plus a confusion matrix PNG.

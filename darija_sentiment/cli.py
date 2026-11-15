@@ -63,6 +63,13 @@ def main(argv: list[str] | None = None) -> int:
     p_build.add_argument("--out", required=True)
     p_build.add_argument("--source", default="youtube")
 
+    p_err = sub.add_parser("errors", help="export wrong predictions for review")
+    p_err.add_argument("--data", default=str(DEFAULT_DATA))
+    p_err.add_argument("--model", default=str(DEFAULT_MODEL))
+    p_err.add_argument("--split", choices=("train", "val", "test"), default="val")
+    p_err.add_argument("--seed", type=int, default=42)
+    p_err.add_argument("--out", default=str(DEFAULT_REPORTS))
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -136,6 +143,11 @@ def main(argv: list[str] | None = None) -> int:
         from darija_sentiment.build_dataset import build_dataset
 
         print(json.dumps(build_dataset(args.raw, args.out, source=args.source), indent=2))
+    elif args.command == "errors":
+        from darija_sentiment.errors import export_errors
+
+        errors = export_errors(args.model, args.data, args.out, split=args.split, seed=args.seed)
+        print(f"{len(errors)} errors written to {args.out}/errors.csv")
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 
