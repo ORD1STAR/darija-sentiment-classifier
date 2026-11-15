@@ -58,6 +58,11 @@ def main(argv: list[str] | None = None) -> int:
     p_yt.add_argument("video_ids", nargs="+")
     p_yt.add_argument("--out", default=str(Path("data") / "raw" / "youtube.jsonl"))
 
+    p_build = sub.add_parser("build-dataset", help="raw JSONL -> anonymized CSV to label")
+    p_build.add_argument("raw", nargs="+")
+    p_build.add_argument("--out", required=True)
+    p_build.add_argument("--source", default="youtube")
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -127,6 +132,10 @@ def main(argv: list[str] | None = None) -> int:
 
         stats = YouTubeCollector().collect(args.video_ids, args.out)
         print(json.dumps(stats, indent=2))
+    elif args.command == "build-dataset":
+        from darija_sentiment.build_dataset import build_dataset
+
+        print(json.dumps(build_dataset(args.raw, args.out, source=args.source), indent=2))
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 

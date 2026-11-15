@@ -84,9 +84,9 @@ Collect public comments with the YouTube Data API v3 into raw JSONL.
 
 ## 14. Raw-to-processed dataset builder
 Turn raw JSONL into an anonymized, deduped CSV ready for labeling.
-- [ ] Usernames are dropped, text is scrubbed
-- [ ] Output follows the labeling schema with empty `label`
-- [ ] Raw files are never modified
+- [x] Usernames are dropped, text is scrubbed
+- [x] Output follows the labeling schema with empty `label`
+- [x] Raw files are never modified
 
 ## 15. Error analysis export
 Export wrong predictions for review and a markdown summary.
