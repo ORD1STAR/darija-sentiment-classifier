@@ -102,9 +102,9 @@ Generate `reports/results.md` plus a confusion matrix PNG.
 
 ## 17. Gradio demo app
 `app/app.py`: text box, button, bar chart of the 3 probabilities, 6 examples.
-- [ ] 2 Arabic, 2 Latin and 2 mixed examples
-- [ ] App loads the saved model, trains the baseline if missing
-- [ ] Headless browser check: page loads, no console errors, prediction renders
+- [x] 2 Arabic, 2 Latin and 2 mixed examples
+- [x] App loads the saved model, trains the baseline if missing
+- [x] Headless browser check: page loads, no console errors, prediction renders
 
 ## 18. DziriBERT fine-tuning script
 Transformers fine-tuning (`alger-ia/dziribert`) with the settings from the brief.
