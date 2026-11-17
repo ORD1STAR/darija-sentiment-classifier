@@ -16,6 +16,8 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]
+bert = ["torch>=2.1", "transformers>=4.40", "accelerate>=0.26"]
+app = ["gradio>=4.44", "playwright>=1.40"]
 
 [project.scripts]
 darija-sentiment = "darija_sentiment.cli:main"

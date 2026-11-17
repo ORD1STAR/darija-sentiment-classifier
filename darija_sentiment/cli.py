@@ -74,6 +74,15 @@ def main(argv: list[str] | None = None) -> int:
     p_rep.add_argument("--metrics", default=str(DEFAULT_REPORTS / "metrics.json"))
     p_rep.add_argument("--out", default=str(DEFAULT_REPORTS))
 
+    p_bert = sub.add_parser("train-bert", help="fine-tune DziriBERT (needs transformers + torch)")
+    p_bert.add_argument("--data", default=str(DEFAULT_DATA))
+    p_bert.add_argument("--out", default=str(Path("artifacts") / "dziribert"))
+    p_bert.add_argument("--model-name", default="alger-ia/dziribert")
+    p_bert.add_argument("--epochs", type=int, default=4)
+    p_bert.add_argument("--lr", type=float, default=2e-5)
+    p_bert.add_argument("--batch-size", type=int, default=16)
+    p_bert.add_argument("--seed", type=int, default=42)
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -156,6 +165,18 @@ def main(argv: list[str] | None = None) -> int:
         from darija_sentiment.report import write_report
 
         print(f"report written to {write_report(args.metrics, args.out)}")
+    elif args.command == "train-bert":
+        from darija_sentiment.bert import BertConfig, train_bert
+
+        config = BertConfig(
+            model_name=args.model_name,
+            learning_rate=args.lr,
+            batch_size=args.batch_size,
+            epochs=args.epochs,
+            seed=args.seed,
+        )
+        result = train_bert(args.data, args.out, config=config)
+        print(json.dumps({k: v for k, v in result.items() if k != "config"}, indent=2))
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 

@@ -108,9 +108,9 @@ Generate `reports/results.md` plus a confusion matrix PNG.
 
 ## 18. DziriBERT fine-tuning script
 Transformers fine-tuning (`alger-ia/dziribert`) with the settings from the brief.
-- [ ] lr 2e-5, batch 16, 4 epochs, max length 128, weight decay 0.01, warmup 10%
-- [ ] Best checkpoint chosen by validation macro F1
-- [ ] Smoke test runs offline on a tiny randomly initialised BERT
+- [x] lr 2e-5, batch 16, 4 epochs, max length 128, weight decay 0.01, warmup 10%
+- [x] Best checkpoint chosen by validation macro F1
+- [x] Smoke test runs offline on a tiny randomly initialised BERT
 
 ## 19. Multi-seed experiments and comparison
 Run several seeds per model and build a comparison table.
