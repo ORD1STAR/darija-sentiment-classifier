@@ -96,9 +96,9 @@ Export wrong predictions for review and a markdown summary.
 
 ## 16. Results report
 Generate `reports/results.md` plus a confusion matrix PNG.
-- [ ] Report includes headline metrics, per-class table and breakdowns
-- [ ] Confusion matrix PNG is rendered with matplotlib (Agg backend)
-- [ ] Report regenerates deterministically from `metrics.json`
+- [x] Report includes headline metrics, per-class table and breakdowns
+- [x] Confusion matrix PNG is rendered with matplotlib (Agg backend)
+- [x] Report regenerates deterministically from `metrics.json`
 
 ## 17. Gradio demo app
 `app/app.py`: text box, button, bar chart of the 3 probabilities, 6 examples.

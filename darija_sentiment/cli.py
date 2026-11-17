@@ -70,6 +70,10 @@ def main(argv: list[str] | None = None) -> int:
     p_err.add_argument("--seed", type=int, default=42)
     p_err.add_argument("--out", default=str(DEFAULT_REPORTS))
 
+    p_rep = sub.add_parser("report", help="render results.md and the confusion matrix PNG")
+    p_rep.add_argument("--metrics", default=str(DEFAULT_REPORTS / "metrics.json"))
+    p_rep.add_argument("--out", default=str(DEFAULT_REPORTS))
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -148,6 +152,10 @@ def main(argv: list[str] | None = None) -> int:
 
         errors = export_errors(args.model, args.data, args.out, split=args.split, seed=args.seed)
         print(f"{len(errors)} errors written to {args.out}/errors.csv")
+    elif args.command == "report":
+        from darija_sentiment.report import write_report
+
+        print(f"report written to {write_report(args.metrics, args.out)}")
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 
