@@ -83,6 +83,13 @@ def main(argv: list[str] | None = None) -> int:
     p_bert.add_argument("--batch-size", type=int, default=16)
     p_bert.add_argument("--seed", type=int, default=42)
 
+    p_cmp = sub.add_parser("compare", help="multi-seed comparison of baseline and BERT")
+    p_cmp.add_argument("--data", default=str(DEFAULT_DATA))
+    p_cmp.add_argument("--models", nargs="+", default=["baseline", "bert"])
+    p_cmp.add_argument("--seeds", nargs="+", type=int, default=[13, 42, 2024])
+    p_cmp.add_argument("--split", choices=("val", "test"), default="test")
+    p_cmp.add_argument("--out", default=str(DEFAULT_REPORTS / "comparison.md"))
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -177,6 +184,11 @@ def main(argv: list[str] | None = None) -> int:
         )
         result = train_bert(args.data, args.out, config=config)
         print(json.dumps({k: v for k, v in result.items() if k != "config"}, indent=2))
+    elif args.command == "compare":
+        from darija_sentiment.compare import compare, write_comparison
+
+        summary = compare(args.data, tuple(args.models), tuple(args.seeds), args.split)
+        print(f"comparison written to {write_comparison(summary, args.out)}")
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 

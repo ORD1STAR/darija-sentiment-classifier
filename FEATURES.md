@@ -114,9 +114,9 @@ Transformers fine-tuning (`alger-ia/dziribert`) with the settings from the brief
 
 ## 19. Multi-seed experiments and comparison
 Run several seeds per model and build a comparison table.
-- [ ] `compare` command runs N seeds for each model and reports mean ± std macro F1
-- [ ] Results are written to `reports/comparison.md`
-- [ ] Works with the baseline alone when transformers is unavailable
+- [x] `compare` command runs N seeds for each model and reports mean ± std macro F1
+- [x] Results are written to `reports/comparison.md`
+- [x] Works with the baseline alone when transformers is unavailable
 
 ## 20. Hub publishing kit
 Model card, dataset card and Space bundle for Hugging Face.
