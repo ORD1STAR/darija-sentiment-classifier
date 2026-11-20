@@ -90,6 +90,15 @@ def main(argv: list[str] | None = None) -> int:
     p_cmp.add_argument("--split", choices=("val", "test"), default="test")
     p_cmp.add_argument("--out", default=str(DEFAULT_REPORTS / "comparison.md"))
 
+    p_space = sub.add_parser("export-space", help="build a Hugging Face Space bundle")
+    p_space.add_argument("--model", default=str(DEFAULT_MODEL))
+    p_space.add_argument("--out", default=str(Path("dist") / "space"))
+
+    p_cards = sub.add_parser("export-cards", help="model card, dataset card, clean dataset")
+    p_cards.add_argument("--data", default=str(DEFAULT_DATA))
+    p_cards.add_argument("--metrics", default=str(DEFAULT_REPORTS / "metrics.json"))
+    p_cards.add_argument("--out", default=str(Path("dist") / "hub"))
+
     p_pred = sub.add_parser("predict", help="classify one comment")
     p_pred.add_argument("text")
     p_pred.add_argument("--model", default=str(DEFAULT_MODEL))
@@ -189,6 +198,15 @@ def main(argv: list[str] | None = None) -> int:
 
         summary = compare(args.data, tuple(args.models), tuple(args.seeds), args.split)
         print(f"comparison written to {write_comparison(summary, args.out)}")
+    elif args.command == "export-space":
+        from darija_sentiment.publish import export_space
+
+        print(f"Space bundle written to {export_space(args.out, args.model)}")
+    elif args.command == "export-cards":
+        from darija_sentiment.publish import export_cards
+
+        for name, path in export_cards(args.data, args.metrics, args.out).items():
+            print(f"{name}: {path}")
     elif args.command == "predict":
         from darija_sentiment.predict import Predictor
 

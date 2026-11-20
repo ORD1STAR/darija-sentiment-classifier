@@ -120,6 +120,6 @@ Run several seeds per model and build a comparison table.
 
 ## 20. Hub publishing kit
 Model card, dataset card and Space bundle for Hugging Face.
-- [ ] `export-space` builds an `app/` bundle with `requirements.txt`
-- [ ] Model card and dataset card are generated from metrics and the labeling guide
-- [ ] Dataset export contains only cleaned text and labels
+- [x] `export-space` builds an `app/` bundle with `requirements.txt`
+- [x] Model card and dataset card are generated from metrics and the labeling guide
+- [x] Dataset export contains only cleaned text and labels

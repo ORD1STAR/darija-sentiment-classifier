@@ -18,3 +18,4 @@ artifacts/
 # local tooling output
 .screenshots/
 *.log
+dist/
