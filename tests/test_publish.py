@@ -28,7 +28,10 @@ def test_space_bundle_is_self_contained(tmp_path):
     assert "sdk: gradio" in (space / "README.md").read_text(encoding="utf-8")
     assert "gradio" in (space / "requirements.txt").read_text(encoding="utf-8")
     # the bundled package imports on its own, without the repo on sys.path
-    code = "import darija_sentiment.predict as p; print(p.Predictor('artifacts/baseline.joblib').predict('sa7a')['label'])"
+    code = (
+        "import darija_sentiment.predict as p; "
+        "print(p.Predictor('artifacts/baseline.joblib').predict('sa7a')['label'])"
+    )
     out = subprocess.run([sys.executable, "-c", code], cwd=space, capture_output=True, text=True)
     assert out.returncode == 0, out.stderr
     assert out.stdout.strip() in {"positive", "negative", "neutral"}
